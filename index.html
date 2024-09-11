@@ -47,6 +47,11 @@
         }
     </style>
 </head>
+<script type="module">
+    const graph1Reponse = await fetch("./tennis.json");
+    const graph1 = await graph1Reponse.json();
+    console.log(graph1);
+</script>
 <body>
 
 <header>
@@ -63,7 +68,7 @@
     <p>Voici la première partie de la page. Cette section peut contenir tout type de contenu comme des textes, des images, des vidéos, etc.</p>
     <figure>
         <div id="graph1">
-            <img src="/img/771206e5918a58d3e1a49c88a03b2248.jpg" alt="Image de la première partie">
+
         </div>
         <figcaption>Image de la première partie</figcaption>
     </figure>
