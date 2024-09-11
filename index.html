@@ -48,29 +48,49 @@
     </style>
 </head>
 <script type="module">
+
+    import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
     const graph1Reponse = await fetch("./tennis.json");
     const graph1 = await graph1Reponse.json();
     console.log(graph1);
+
+    const plot = Plot.plot({x: { label: "Tournois" }, y: { grid: true, label: "Vainqueurs" }, color: { legend: true }, marginLeft: 130,
+    marks: [
+    Plot.dot(
+        graph1,
+      Plot.group(
+        { r: "count" },
+        { x: "TOURNAMENT", y: "WINNER", stroke: "TOURNAMENT", tip: true }
+      )
+    )
+  ]
+})
+    const div = document.querySelector("#graph1");
+    div.append(plot);
+
+    
+
 </script>
 <body>
 
 <header>
-    <h1>Exemple de page avec des ancres</h1>
+    <h1>Graphiques sur le tennis dans le monde</h1>
 </header>
 
 <nav>
-    <a href="#partie1">Sous Partie 1</a>
+    <a href="#partie1">Domination du Big Three</a>
     <a href="#partie2">Sous Partie 2</a>
 </nav>
 
 <section id="partie1">
-    <h2>Partie 1 : Introduction</h2>
-    <p>Voici la première partie de la page. Cette section peut contenir tout type de contenu comme des textes, des images, des vidéos, etc.</p>
+    <h2>Domination du Big Three de 2002 à 2022 sur les tournois de grand Chelem</h2>
+    <p>Nombre de victoires par tournois du grand chelem et par joueur entre 2002 à 2022</p>
     <figure>
         <div id="graph1">
 
         </div>
-        <figcaption>Image de la première partie</figcaption>
+        <figcaption>Graphique du nombre de victoires par tournois du grand chelem et par joueur entre 2002 à 2022</figcaption>
     </figure>
 </section>
 
@@ -79,7 +99,7 @@
     <p>Voici la deuxième partie de la page. Elle conclut le sujet avec quelques réflexions finales et des informations supplémentaires.</p>
     <figure>
         <div id="graph2">
-            <img src="/img/nudge-lille-marelle-poublle-AFP-PHILIPPE-HUGUEN.webp" alt="Image de la deuxième partie">  
+        
         </div>
          <figcaption>Image de la première partie</figcaption>
     </figure>
