@@ -36,9 +36,20 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
         }
+        p {
+            margin-left: 6rem;
+            margin-right: 6rem;
+        }
+        figcaption {
+            color: #5d5d5d;
+            margin-bottom: 3rem;
+        }
+        ul {
+            margin-left: 6rem;
+            margin-right: 6rem;
+        }
         footer {
             background-color: #333;
-            padding: -2rem;
             text-align: center;
             color: white;
             position: fixed;
@@ -51,6 +62,7 @@
 
     import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 
+//Premier graphique
     const graph1Reponse = await fetch("./tennis.json");
     const graph1 = await graph1Reponse.json();
     console.log(graph1);
@@ -69,8 +81,15 @@
     const div = document.querySelector("#graph1");
     div.append(plot);
 
-    
+//Deuxième graphique
+    const graph2Reponse = await fetch("./vainqueur.json");
+    const graph2 = await graph2Reponse.json();
+    console.log(graph2);
 
+    const plot2 = Plot.plot({marginLeft: 110,x: {grid: true},marks: [Plot.barX(graph2, Plot.groupY({x: "count"}, {y: "WINNER_NATIONALITY", tip: true, sort: {y: "x", reverse: true, limit: 10}})),
+    Plot.ruleX([0])]});
+    const div2 = document.querySelector("#graph2");
+    div2.append(plot2);
 </script>
 <body>
 
@@ -80,7 +99,7 @@
 
 <nav>
     <a href="#partie1">Domination du Big Three</a>
-    <a href="#partie2">Sous Partie 2</a>
+    <a href="#partie2">Nationnalités des vainqueurs</a>
 </nav>
 
 <section id="partie1">
@@ -92,21 +111,44 @@
         </div>
         <figcaption>Graphique du nombre de victoires par tournois du grand chelem et par joueur entre 2002 à 2022</figcaption>
     </figure>
+    <p>De 2002 à 2022, le monde du tennis masculin a été marqué par la domination extraordinaire de trois joueurs légendaires : Roger Federer, Rafael Nadal et Novak Djokovic, surnommés le "Big Three". Ces trois athlètes ont transformé le paysage du tennis, se partageant la grande majorité des titres en Grand Chelem pendant deux décennies. Leur rivalité a captivé les fans et défini une ère unique de l'histoire du sport.</p>
+    <p>Roger Federer : Le Suisse, considéré comme l'un des joueurs les plus élégants et techniques de tous les temps, a dominé le tennis dans les années 2000 et reste un maître des surfaces rapides.</p>
+    <p>Rafael Nadal : Le "Roi de la Terre battue", avec son incroyable domination sur la surface ocre, a laissé une empreinte indélébile sur Roland-Garros, tout en restant un compétiteur redoutable sur toutes les autres surfaces.</p>     
+    <p>Novak Djokovic : Le Serbe, avec sa constance physique et mentale, a pris son envol au début des années 2010, s'imposant comme un joueur complet capable de battre ses rivaux sur tous les terrains.</p>
+    <p>La domination du Big Three sur les tournois de Grand Chelem est sans précédent dans l'histoire du tennis. Collectivement, Federer, Nadal et Djokovic ont remporté 64 des 80 titres possibles entre 2002 et 2022, soit 80% des tournois majeurs. Leur domination s'est exprimée de manière différente selon les surfaces et les époques : 
+    Roger Federer a brillé particulièrement dans la première moitié de cette période, avant que ses rivaux ne prennent le dessus, surtout après 2010.
+    Rafael Nadal a largement dominé Roland-Garros et a maintenu une constance sur l'ensemble de sa carrière.
+    Novak Djokovic a pris l'ascendant à partir de 2011, dominant particulièrement l'Open d'Australie et Wimbledon dans la deuxième moitié de cette période.
+    Ensemble, ils ont réécrit les livres d'histoire du tennis et marqué cette période d'une empreinte indélébile.</p> 
+    <p>Le "Big Three" a redéfini le concept de rivalité dans le tennis, rendant chaque Grand Chelem une scène d'affrontement entre ces titans. Leur domination est un témoignage de leur excellence et de leur capacité à s'adapter à toutes les surfaces et conditions de jeu. Ce sera l'une des périodes les plus mémorables et étudiées dans l'histoire du tennis.</p>
 </section>
 
 <section id="partie2">
-    <h2>Partie 2 : Conclusion</h2>
-    <p>Voici la deuxième partie de la page. Elle conclut le sujet avec quelques réflexions finales et des informations supplémentaires.</p>
+    <h2>Les différentes nationnalités des vainqueurs au Grand Chelem</h2>
+    <p>Graphique représentant les différentes nationnalités des vainqueurs au tennis</p>
     <figure>
         <div id="graph2">
         
         </div>
-         <figcaption>Image de la première partie</figcaption>
+         <figcaption>Image montrant les nationnalités des vainqueurs au grand chelem</figcaption>
     </figure>
+    <p>De 2002 à 2022, le tennis masculin a été dominé principalement par le Big Three, composé de Roger Federer, Rafael Nadal, et Novak Djokovic. Cependant, d'autres joueurs issus de différentes nationalités ont également remporté des titres en Grand Chelem, apportant de la diversité sur la scène mondiale. Cette période a vu des victoires provenant de nations ayant une riche tradition tennistique, ainsi que d'autres plus inattendues. Le graphique ci-dessous illustre la répartition des titres par nationalité.
+    </p>
+    <p>Nationalités des vainqueurs de Grand Chelem (2002-2022)</p>
+    <ul>
+        <li>Suisse : Roger Federer (20 titres)</li>
+        <li>Espagne : Rafael Nadal (22 titres), Carlos Alcaraz (1 titre)</li>
+        <li>Serbie : Novak Djokovic (22 titres)</li>
+        <li>Grande-Bretagne : Andy Murray (3 titres)</li>
+        <li>Argentine : Gastón Gaudio (1 titre), Juan Martín del Potro (1 titre)</li>
+        <li>Croatie : Marin Čilić (1 titre)</li>
+    </ul>
+    <p>Bien que le Big Three ait monopolisé la majorité des tournois, certains joueurs d'autres pays ont réussi à se hisser au sommet et à remporter des titres majeurs. La diversité géographique des vainqueurs montre l'étendue du talent tennistique à travers le monde. Des nations avec une tradition forte comme l'Argentine et la Grande-Bretagne ont produit des champions notables, tandis que d'autres nations comme la Croatie et la Russie ont également émergé sur la scène mondiale.</p>
+    <p>Il semble que je ne puisse pas créer le graphique pour le moment. Je te recommande de réessayer plus tard, ou si tu préfères, je peux te fournir les données textuelles pour que tu puisses les visualiser de ton côté.</p>
 </section>
 
 <footer>
-    <p>© 2024 - Mon site web</p>
+    <h4>© 2024 - Mon site web</h4>
 </footer>
 
 </body>
